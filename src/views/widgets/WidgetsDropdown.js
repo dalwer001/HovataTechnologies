@@ -103,7 +103,7 @@ const WidgetsDropdown = () => {
                               <CIcon name="cil-settings" />
                             </CDropdownToggle>
                             <CDropdownMenu className="pt-0" placement="bottom-end">
-                              <CDropdownItem onClick={randomizedHex}>Card Color Changer</CDropdownItem>
+                              <CDropdownItem onClick={randomizedHex}>Theme Change</CDropdownItem>
                             </CDropdownMenu>
                           </CDropdown>
                         </CWidgetDropdown>
