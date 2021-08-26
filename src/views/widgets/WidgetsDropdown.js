@@ -2,73 +2,50 @@ import React, { useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {
   CWidgetDropdown,
-  CRow,
-  CCol,
   CDropdown,
   CDropdownMenu,
   CDropdownItem,
   CDropdownToggle
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import ChartLineSimple from '../charts/ChartLineSimple'
-// import ChartBarSimple from '../charts/ChartBarSimple'
-
-
-
-
+import ChartLineSimple from '../charts/ChartLineSimple';
 
 
 const WidgetsDropdown = () => {
-  // {
-  //   data.map(({color1})=>{
 
-  //   })
-  // }
   const data = [
     {
       id: 1,
       title: "",
-      // color1:"#484777",
       textColor1: "white",
-      // setColor1:"black"
     },
     {
       id: 2,
       title: "Members Online",
-      // color1:"lightBlue",
-      textColor1: "white",
-      // setColor1:"orange"
+      textColor1: "white"
     },
     {
       id: 3,
       title: "Members Online",
-      // color1:"orange",
       textColor1: "white",
-      // setColor1:"green"
-  
     },
     {
       id: 4,
       title: "Members Online",
-      // color1:"red",
       textColor1: "white",
-      // setColor1:"#F2B7C7"
     },
   
   ];
 
 
   const [list, setList] = useState(data);
-  const [color, setColor] = useState("#541743");
+  const [hex, setHex] = useState("#F47267");
 
- //  const [color2, setColor2] = useState("lightBlue");
-  // const [textColor2, setTextColor2] = useState('white');
+  const randomizedHex = () =>{
+    const randomColor = "#"+Math.floor(Math.random()*16777215).toString(16);
+    setHex(randomColor);
+  }
 
-  // const [color3, setColor3] = useState("orange");
-  // const [textColor3, setTextColor3] = useState("white");
-
-  // const [color4, setColor4] = useState("red");
-  // const [textColor4, setTextColor4] = useState("white");
 
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
@@ -106,7 +83,7 @@ const WidgetsDropdown = () => {
                       {...provided.dragHandleProps}>
                         
                         <CWidgetDropdown
-                          style={{ background: color, color: item.textColor1 }}
+                          style={{ background: `${hex}`, overflow:'hidden', color: item.textColor1 }}
                           header="9.823"
                           text={item.title}
                           footerSlot={
@@ -126,10 +103,7 @@ const WidgetsDropdown = () => {
                               <CIcon name="cil-settings" />
                             </CDropdownToggle>
                             <CDropdownMenu className="pt-0" placement="bottom-end">
-                              <CDropdownItem onClick={() => { setColor("#541743") }}>Default theme</CDropdownItem>
-                              <CDropdownItem onClick={() => { setColor("black") }}>Dark theme</CDropdownItem>
-                              <CDropdownItem onClick={() => { setColor("#F2B7C7") }}>Light Pink Theme</CDropdownItem>
-                              <CDropdownItem onClick={() => { setColor("#A7CAAA") }}>Light Green Theme</CDropdownItem>
+                              <CDropdownItem onClick={randomizedHex}>Card Color Changer</CDropdownItem>
                             </CDropdownMenu>
                           </CDropdown>
                         </CWidgetDropdown>
@@ -144,7 +118,6 @@ const WidgetsDropdown = () => {
     </DragDropContext>
   )
 }
-
 
 export default WidgetsDropdown;
 

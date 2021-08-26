@@ -14,26 +14,26 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 // import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import Dragula from 'react-dragula';
 import MainChartExample from '../charts/MainChartExample.js'
 
 const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
 const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
+
+const dragulaDecorator = (componentBackingInstance) => {
+  if (componentBackingInstance) {
+    let options = { };
+    Dragula([componentBackingInstance], options);
+  }
+};
 
 
 
 const Dashboard = () => {
   return (
     <>
-      {/* <DragDropContext> */}
-        {/* <Droppable droppableId="characters"> */}
-          
-            {/* <ul className="characters" > */}
-              {/* <Draggable> */}
-                
-                {/* <li style={{ listStyle: "none" }}></li> */}
+                <div  className='container' ref={dragulaDecorator} style={{cursor:"grab"}}>
                   <WidgetsDropdown /> 
-                {/* <li style={{ listStyle: "none" }}> </li> */}
                   <CCard>
                     <CCardBody>
                       <CRow>
@@ -116,17 +116,7 @@ const Dashboard = () => {
                       </CRow>
                     </CCardFooter>
                   </CCard>
-
-               
-                
-              {/* </Draggable> */}
-            {/* </ul> */}
-
-
-
-
-        {/* </Droppable>
-      </DragDropContext> */}
+                  </div>
 
       <WidgetsBrand withCharts />
 
