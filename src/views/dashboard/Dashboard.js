@@ -32,7 +32,7 @@ const dragulaDecorator = (componentBackingInstance) => {
 const Dashboard = () => {
   return (
     <>
-                <div  className='container' ref={dragulaDecorator} style={{cursor:"grab"}}>
+                <div ref={dragulaDecorator} style={{cursor:"grab"}}>
                   <WidgetsDropdown /> 
                   <CCard>
                     <CCardBody>
